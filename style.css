@@ -1,0 +1,93 @@
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden; /* Previne barras de rolagem causadas pelas bolhas */
+}
+
+/* Fundo base para o body */
+.bg-base {
+    background-color: #f1f5f9;
+}
+.dark .bg-base {
+    background-color: #0f172a;
+}
+
+/* Bolhas animadas para o fundo */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    z-index: -1;
+}
+.dark .blob {
+    opacity: 0.3;
+}
+.blob-1 {
+    width: 350px;
+    height: 350px;
+    background-color: #a78bfa; /* violet-400 */
+    top: -150px;
+    left: -150px;
+    animation: move 20s infinite alternate;
+}
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    background-color: #7dd3fc; /* sky-300 */
+    bottom: -200px;
+    right: -200px;
+    animation: move 25s infinite alternate-reverse;
+}
+.blob-3 {
+    width: 300px;
+    height: 300px;
+    background-color: #f472b6; /* pink-400 */
+    bottom: 50px;
+    left: -100px;
+    animation: move 18s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(0, 0) rotate(0deg) scale(1); }
+    to { transform: translate(100px, -50px) rotate(180deg) scale(1.2); }
+}
+
+.slide {
+    display: none; 
+    min-height: 580px;
+}
+
+.slide.active {
+    display: flex;
+}
+
+/* Animação de entrada dos slides refinada */
+.slide-content {
+    animation: fadeIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Estilos da barra de rolagem */
+.tips-container::-webkit-scrollbar { width: 8px; }
+.tips-container::-webkit-scrollbar-track { background: transparent; }
+.tips-container::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+.dark .tips-container::-webkit-scrollbar-thumb { background-color: #475569; }
+
+/* Estilos do Modo Liquid Glass (Permanente e mais fosco) */
+.glass-card {
+    background-color: rgba(255, 255, 255, 0.45); /* Mais opaco/fosco no modo claro */
+    backdrop-filter: blur(40px); /* Desfoque aumentado */
+    -webkit-backdrop-filter: blur(40px); /* Para Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.15); /* Sombra mais difusa */
+}
+.dark .glass-card {
+    background-color: rgba(15, 23, 42, 0.65); /* Mais opaco/fosco no modo escuro */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

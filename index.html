@@ -1,159 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-br" class=""> <!-- A classe 'dark' será adicionada aqui via JS -->
-<head>
+<html lang="pt-br" class=""> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio PH - Pedro Henrick</title>
 
-    <!-- Meta Tags para Compartilhamento (SEO e Redes Sociais) -->
     <meta name="description" content="Suporte técnico de confiança para resolver problemas de lentidão, vírus, formatação e mais.">
-    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
     <meta property="og:title" content="Pedro Henrick - Suporte Técnico de Confiança">
     <meta property="og:description" content="Computador lento ou com vírus? Resolvo para você, aqui mesmo no condomínio.">
     <meta property="og:image" content="https://placehold.co/1200x630/1e293b/ffffff?text=Pedro+Henrick">
-    <meta property="og:url" content="#"> <!-- Substituir # pelo link real quando hospedar -->
-    <meta property="og:type" content="website">
-    <!-- Twitter -->
+    <meta property="og:url" content="#"> <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pedro Henrick - Suporte Técnico de Confiança">
     <meta name="twitter:description" content="Computador lento ou com vírus? Resolvo para você, aqui mesmo no condomínio.">
     <meta name="twitter:image" content="https://placehold.co/1200x630/1e293b/ffffff?text=Pedro+Henrick">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Configuração do Tailwind para Modo Escuro -->
     <script>
         tailwind.config = {
           darkMode: 'class', // Habilita o modo escuro baseado em classe
         }
     </script>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     
-    <!-- CSS (Interface) -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow: hidden; /* Previne barras de rolagem causadas pelas bolhas */
-        }
-
-        /* Fundo base para o body */
-        .bg-base {
-            background-color: #f1f5f9;
-        }
-        .dark .bg-base {
-            background-color: #0f172a;
-        }
-
-        /* Bolhas animadas para o fundo */
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.5;
-            z-index: -1;
-        }
-        .dark .blob {
-            opacity: 0.3;
-        }
-        .blob-1 {
-            width: 350px;
-            height: 350px;
-            background-color: #a78bfa; /* violet-400 */
-            top: -150px;
-            left: -150px;
-            animation: move 20s infinite alternate;
-        }
-        .blob-2 {
-            width: 400px;
-            height: 400px;
-            background-color: #7dd3fc; /* sky-300 */
-            bottom: -200px;
-            right: -200px;
-            animation: move 25s infinite alternate-reverse;
-        }
-        .blob-3 {
-            width: 300px;
-            height: 300px;
-            background-color: #f472b6; /* pink-400 */
-            bottom: 50px;
-            left: -100px;
-            animation: move 18s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(0, 0) rotate(0deg) scale(1); }
-            to { transform: translate(100px, -50px) rotate(180deg) scale(1.2); }
-        }
-
-        .slide {
-            display: none; 
-            min-height: 580px;
-        }
-
-        .slide.active {
-            display: flex;
-        }
-
-        /* Animação de entrada dos slides refinada */
-        .slide-content {
-            animation: fadeIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* Estilos da barra de rolagem */
-        .tips-container::-webkit-scrollbar { width: 8px; }
-        .tips-container::-webkit-scrollbar-track { background: transparent; }
-        .tips-container::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
-        .dark .tips-container::-webkit-scrollbar-thumb { background-color: #475569; }
-        
-        /* Estilos do Modo Liquid Glass (Permanente e mais fosco) */
-        .glass-card {
-            background-color: rgba(255, 255, 255, 0.45); /* Mais opaco/fosco no modo claro */
-            backdrop-filter: blur(40px); /* Desfoque aumentado */
-            -webkit-backdrop-filter: blur(40px); /* Para Safari */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.15); /* Sombra mais difusa */
-        }
-        .dark .glass-card {
-            background-color: rgba(15, 23, 42, 0.65); /* Mais opaco/fosco no modo escuro */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body class="bg-base flex flex-col items-center justify-center min-h-screen p-4 transition-colors duration-500">
     
-    <!-- Bolhas de Fundo -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
 
-    <div class="relative z-10 w-full"> <!-- Wrapper para colocar conteúdo acima das bolhas -->
-        <!-- Container para os botões de controle -->
-        <div class="absolute top-0 right-0 -mt-10 mr-4 flex items-center space-x-2">
-            <!-- Botão de Alternância de Tema -->
+    <div class="relative z-10 w-full"> <div class="absolute top-0 right-0 -mt-10 mr-4 flex items-center space-x-2">
             <button id="theme-toggle" class="p-2 rounded-full bg-white/50 dark:bg-slate-700/50 text-slate-800 dark:text-slate-200 shadow-md transition-all duration-300 backdrop-blur-sm hover:scale-110 active:scale-95">
                 <svg id="theme-icon-sun" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 7.072l.707-.707a1 1 0 10-1.414-1.414l-.707.707a1 1 0 101.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
             </button>
         </div>
 
-        <!-- Container do Card de Conteúdo -->
         <div class="w-full max-w-md mx-auto bg-white/60 dark:bg-slate-800/60 rounded-2xl shadow-2xl overflow-hidden transition-colors duration-300 glass-card">
             <div id="presentation-container" class="relative">
-        
-                <!-- Slide 1: Capa -->
+    
                 <div id="slide-1" class="slide active flex-col justify-between text-center p-8 bg-slate-900/80 dark:bg-black/70 text-white rounded-t-2xl">
                     <div class="slide-content w-full">
                         <div class="mb-8">
@@ -165,8 +56,7 @@
                         <p class="text-lg text-slate-300">Resolvo para você, aqui mesmo no condomínio.</p>
                     </div>
                 </div>
-        
-                <!-- Slide 2: Serviços -->
+    
                 <div id="slide-2" class="slide flex-col justify-center p-6 md:p-8">
                     <div class="slide-content w-full">
                         <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 text-center mb-6">O que eu resolvo para você:</h2>
@@ -181,6 +71,7 @@
                             </div>
                             <div class="bg-white/50 dark:bg-slate-900/40 rounded-xl p-4 text-center hover:bg-white/80 dark:hover:bg-slate-900/60 transition-colors glass-card">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-teal-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a7.5 7.5 0 0110.606 0M15.89 9.11a5.5 5.5 0 010 7.778" /></svg>
+
                                 <h3 class="font-bold text-slate-700 dark:text-slate-300">Internet e Wi-Fi</h3>
                             </div>
                             <div class="bg-white/50 dark:bg-slate-900/40 rounded-xl p-4 text-center hover:bg-white/80 dark:hover:bg-slate-900/60 transition-colors glass-card">
@@ -190,8 +81,7 @@
                         </div>
                     </div>
                 </div>
-        
-                <!-- Slide 3: Diferenciais -->
+    
                 <div id="slide-3" class="slide flex-col justify-center p-8">
                     <div class="slide-content w-full">
                         <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 text-center mb-8">Por que me chamar?</h2>
@@ -203,7 +93,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 4: Como funciona o Orçamento? -->
                 <div id="slide-4" class="slide flex-col justify-center p-8">
                     <div class="slide-content w-full">
                         <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 text-center mb-6">Como funciona o Orçamento?</h2>
@@ -221,8 +110,7 @@
                         <p class="text-center text-xs text-slate-400 mt-6">É tudo combinado antes para não haver surpresas!</p>
                     </div>
                 </div>
-        
-                <!-- Slide 5: Depoimentos -->
+    
                 <div id="slide-5" class="slide flex-col justify-center p-8">
                     <div class="slide-content w-full">
                         <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 text-center mb-8">O que os vizinhos dizem:</h2>
@@ -240,8 +128,7 @@
                         </div>
                     </div>
                 </div>
-        
-                <!-- Slide 6: Portfólio Técnico Detalhado -->
+    
                 <div id="slide-6" class="slide flex-col justify-center p-6 md:p-8">
                     <div class="slide-content w-full flex flex-col">
                         <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 text-center mb-4">Portfólio Técnico Detalhado</h2>
@@ -271,8 +158,7 @@
                         </div>
                     </div>
                 </div>
-        
-                <!-- Slide 7: Contato -->
+    
                 <div id="slide-7" class="slide flex-col justify-center items-center text-center p-8 bg-slate-900/80 dark:bg-black/70 text-white">
                     <div class="slide-content w-full">
                         <h2 class="text-3xl font-bold mb-4">Vamos resolver seu problema?</h2>
@@ -295,24 +181,21 @@
                         </div>
                     </div>
                 </div>
-        
-                <!-- Slide 8: Central de Dicas -->
+    
                 <div id="slide-8" class="slide flex-col justify-center p-6 md:p-8">
                     <div class="slide-content w-full flex flex-col">
                         <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 text-center mb-4">Central de Dicas Rápidas</h2>
                         <div class="tips-container flex-grow overflow-y-auto pr-2" style="max-height: 420px;">
-                            <!-- As dicas serão inseridas aqui via JavaScript -->
-                        </div>
+                            </div>
                         <button id="backToContactBtn" class="mt-4 w-full block bg-slate-600/80 dark:bg-slate-700/80 text-white font-bold py-3 px-6 rounded-lg text-base hover:bg-slate-700 dark:hover:bg-slate-600 transition-colors glass-card">
                             Voltar para Contato
                         </button>
                     </div>
                 </div>
-        
+    
             </div>
         </div>
         
-        <!-- Barra de Navegação Externa -->
         <div class="mt-8 w-full max-w-xs mx-auto">
             <div class="flex justify-between items-center p-1.5 bg-white/60 dark:bg-slate-700/60 rounded-full shadow-lg transition-colors duration-300 glass-card">
                 <button id="prevBtn" class="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 bg-slate-100/70 dark:bg-slate-600/70 rounded-full hover:bg-slate-200/90 dark:hover:bg-slate-500/90 disabled:opacity-50 transition-all transform hover:scale-105 active:scale-95">Anterior</button>
@@ -322,194 +205,7 @@
         </div>
     </div>
     
-    <!-- JavaScript (Gestos) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- LÓGICA DO MODO CLARO/ESCURO ---
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const sunIcon = document.getElementById('theme-icon-sun');
-            const moonIcon = document.getElementById('theme-icon-moon');
-
-            const applyTheme = (theme) => {
-                if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                    sunIcon.classList.add('hidden');
-                    moonIcon.classList.remove('hidden');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    sunIcon.classList.remove('hidden');
-                    moonIcon.classList.add('hidden');
-                    localStorage.setItem('theme', 'light');
-                }
-            };
-
-            themeToggleBtn.addEventListener('click', () => {
-                const currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-                applyTheme(currentTheme);
-            });
-
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-
-            // --- EFEITO GLASS SEMPRE ATIVO ---
-            document.body.classList.add('glass-effect');
-
-            // --- LÓGICA DOS SLIDES ---
-            const slides = document.querySelectorAll('.slide');
-            const nextBtn = document.getElementById('nextBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const tipsBtn = document.getElementById('tipsBtn');
-            const backToContactBtn = document.getElementById('backToContactBtn');
-            const paginationContainer = document.getElementById('pagination');
-            const tipsContainer = document.querySelector('.tips-container');
-            let currentSlide = 0;
-            
-            // --- LÓGICA DE COPIAR E-MAIL ---
-            const copyEmailBtn = document.getElementById('copyEmailBtn');
-            const copyEmailText = document.getElementById('copyEmailText');
-            const emailToCopy = "pedrohenrick200428@gmail.com"; // Seu e-mail aqui
-
-            copyEmailBtn.addEventListener('click', () => {
-                const tempInput = document.createElement('textarea');
-                tempInput.value = emailToCopy;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-
-                // Feedback visual
-                copyEmailText.textContent = 'Copiado!';
-                setTimeout(() => {
-                    copyEmailText.textContent = 'Copiar E-mail';
-                }, 2000);
-            });
-
-
-            const techTips = [
-                { category: 'Desempenho', title: 'Reinicie Regularmente', text: 'Reiniciar o computador pelo menos uma vez por semana limpa a memória e pode resolver lentidões.' },
-                { category: 'Desempenho', title: 'Limpe a Área de Trabalho', text: 'Muitos arquivos na área de trabalho podem deixar seu computador mais lento para iniciar. Organize-os em pastas.' },
-                { category: 'Desempenho', title: 'Desinstale o que não Usa', text: 'Programas que você não usa mais ocupam espaço e podem deixar o sistema mais lento. Desinstale-os.' },
-                { category: 'Desempenho', title: 'Atalho para Travar Tarefas', text: 'Se um programa travar, aperte Ctrl + Shift + Esc para abrir o Gerenciador de Tarefas e finalizá-lo.' },
-                { category: 'Desempenho', title: 'Esvazie a Lixeira', text: 'Arquivos na lixeira ainda ocupam espaço no disco. Esvazie-a regularmente para liberar espaço.' },
-                { category: 'Desempenho', title: 'Limite os Programas de Inicialização', text: 'Muitos programas que iniciam com o Windows deixam o boot lento. Desative os desnecessários.' },
-                { category: 'Desempenho', title: 'Use um SSD', text: 'Trocar seu HD antigo por um SSD é a melhoria de performance mais impactante que você pode fazer.' },
-                { category: 'Desempenho', title: 'Mantenha Espaço Livre', text: 'Tente manter pelo menos 15% do seu disco principal livre para o sistema operar com folga.' },
-                { category: 'Desempenho', title: 'Limpe Arquivos Temporários', text: 'Use a ferramenta "Limpeza de Disco" do Windows para remover arquivos inúteis que se acumulam com o tempo.' },
-                { category: 'Desempenho', title: 'Feche Abas do Navegador', text: 'Muitas abas abertas no Chrome ou Firefox consomem muita memória RAM. Feche as que não estiver usando.' },
-                { category: 'Segurança', title: 'Senhas Fortes e Únicas', text: 'Use senhas com letras maiúsculas, minúsculas, números e símbolos. Não repita a mesma senha em vários sites.' },
-                { category: 'Segurança', title: 'Cuidado com E-mails', text: 'Não clique em links ou baixe anexos de e-mails suspeitos. Pode ser um vírus ou golpe (phishing).' },
-                { category: 'Segurança', title: 'Mantenha Tudo Atualizado', text: 'Sempre que seu sistema (Windows) ou programas pedirem para atualizar, faça. As atualizações corrigem falhas de segurança.' },
-                { category: 'Segurança', title: 'Backup é Essencial', text: 'Salve seus arquivos importantes em um HD externo ou na nuvem (Google Drive, OneDrive) para não perder nada.' },
-                { category: 'Segurança', title: 'Antivírus Ativo', text: 'Certifique-se de que seu antivírus está sempre ativo e atualizado para se proteger de ameaças.' },
-                { category: 'Segurança', title: 'Cuidado com Downloads', text: 'Baixe programas apenas de sites oficiais e confiáveis para evitar a instalação de vírus.' },
-                { category: 'Segurança', title: 'Verifique a Rede Wi-Fi', text: 'Ao se conectar em redes públicas (shoppings, cafés), evite fazer transações bancárias ou colocar dados sensíveis.' },
-                { category: 'Segurança', title: 'Ative a Verificação em Duas Etapas', text: 'Em contas importantes como e-mail e redes sociais, ative esta camada extra de segurança.' },
-                { category: 'Segurança', title: 'Desconfie de Ofertas Milagrosas', text: 'Links que prometem prêmios ou produtos muito baratos geralmente são golpes para roubar seus dados.' },
-                { category: 'Segurança', title: 'Cubra sua Webcam', text: 'Quando não estiver usando a webcam, cubra-a com um adesivo. É uma medida simples e eficaz contra espionagem.' },
-                { category: 'Internet e Wi-Fi', title: 'Posição do Roteador', text: 'Deixe seu roteador de Wi-Fi em um local alto e central da casa para um sinal melhor, longe de paredes e objetos metálicos.' },
-                { category: 'Internet e Wi-Fi', title: 'Reinicie o Roteador', text: 'A internet ficou lenta? Tirar o roteador da tomada por 30 segundos e ligar de novo pode resolver muitos problemas.' },
-                { category: 'Internet e Wi-Fi', title: 'Senha Forte no Wi-Fi', text: 'Proteja sua rede Wi-Fi com uma senha forte para evitar que vizinhos usem sua conexão e a deixem lenta.' },
-                { category: 'Internet e Wi-Fi', title: 'Use a Frequência Certa', text: 'Se seu roteador tiver redes 2.4GHz e 5GHz, use a 5GHz para dispositivos mais próximos (TV, videogame) e a 2.4GHz para os mais distantes.' },
-                { category: 'Internet e Wi-Fi', title: 'Cabo de Rede é Rei', text: 'Para atividades que exigem máxima velocidade e estabilidade, como jogos online ou streaming em 4K, prefira conectar o dispositivo via cabo de rede.' },
-                { category: 'Internet e Wi-Fi', title: 'Cuidado com Muitos Dispositivos', text: 'Muitos celulares, TVs e outros aparelhos conectados ao mesmo tempo podem sobrecarregar sua rede Wi-Fi.' },
-                { category: 'Internet e Wi-Fi', title: 'Repetidores de Sinal', text: 'Se sua casa é grande, um repetidor de sinal pode ajudar a levar o Wi-Fi para os cômodos mais distantes.' },
-                { category: 'Internet e Wi-Fi', title: 'Limpe o Cache do Navegador', text: 'Se um site específico não carrega direito, limpar o cache e os cookies do seu navegador pode resolver.' },
-                { category: 'Internet e Wi-Fi', title: 'Verifique a Velocidade', text: 'Use sites como "Speedtest" ou "Fast.com" para verificar se você está recebendo a velocidade de internet que contratou.' },
-                { category: 'Internet e Wi-Fi', title: 'Mantenha o Roteador Atualizado', text: 'Assim como seu computador, o roteador também tem um software (firmware) que precisa ser atualizado para melhor segurança e desempenho.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Limpeza Física', text: 'Mantenha o teclado e as entradas de ar do seu notebook ou computador limpos para evitar superaquecimento.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Cuidado com o Superaquecimento', text: 'Não use o notebook em cima de camas ou sofás, pois isso bloqueia a ventilação e pode danificar os componentes.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Use um Filtro de Linha', text: 'Conecte seus equipamentos em um bom filtro de linha para protegê-los contra picos de energia.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Organize os Cabos', text: 'Manter os cabos organizados atrás do computador melhora a ventilação e evita acidentes.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Desligue Corretamente', text: 'Sempre use a opção "Desligar" do menu Iniciar para encerrar o sistema de forma segura.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Cuidado com Líquidos', text: 'Mantenha copos e garrafas longe do seu notebook ou teclado para evitar acidentes que podem ser fatais para o aparelho.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Transporte com Cuidado', text: 'Ao transportar um notebook, use uma capa ou mochila apropriada para protegê-lo de impactos.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Não Force Conectores', text: 'Ao conectar um cabo USB ou de energia, verifique a posição correta e não force a entrada para não danificar o conector.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Atalho para Nova Aba', text: 'No navegador, aperte Ctrl + T para abrir uma nova aba rapidamente, sem precisar usar o mouse.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Atalho para Fechar Janela', text: 'Use o atalho Alt + F4 para fechar rapidamente a janela ou programa ativo.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Atalho para Minimizar Tudo', text: 'Aperte a Tecla do Windows + D para minimizar todas as janelas e mostrar a área de trabalho instantaneamente.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Atalho para Bloquear o PC', text: 'Precisa sair da mesa rapidinho? Aperte a Tecla do Windows + L para bloquear a tela e proteger sua privacidade.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Use Várias Áreas de Trabalho', text: 'No Windows, aperte Tecla do Windows + Tab para criar e alternar entre diferentes áreas de trabalho, organizando melhor suas tarefas.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Ferramenta de Captura', text: 'Use o atalho Tecla do Windows + Shift + S para abrir a ferramenta de captura e tirar um print de parte da tela.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Histórico da Área de Transferência', text: 'Aperte Tecla do Windows + V para ver um histórico de tudo que você copiou (Ctrl + C) e escolher o que colar.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Modo Noturno', text: 'Ative a "Luz Noturna" nas configurações do Windows para reduzir a luz azul da tela à noite, o que ajuda a cansar menos a vista.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Ajuste o Tamanho do Texto', text: 'Se as letras estão pequenas, vá em Configurações > Tela e ajuste a "Escala" para aumentar tudo na tela e facilitar a leitura.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Foco no Windows', text: 'Use o "Assistente de Foco" do Windows para silenciar notificações quando precisar se concentrar em uma tarefa importante.' },
-                { category: 'Boas Práticas e Manutenção', 'title': 'Verifique o Espaço em Disco', text: 'Clique com o botão direito no seu Disco Local (C:) > Propriedades para ver quanto espaço livre você ainda tem.' },
-                { category: 'Boas Práticas e Manutenção', title: 'Crie um Ponto de Restauração', text: 'Antes de instalar um programa novo, crie um "Ponto de Restauração". Se algo der errado, você pode voltar o sistema para como ele estava antes.' }
-            ];
-
-            function populateTips() {
-                let currentCategory = "";
-                tipsContainer.innerHTML = ''; 
-                techTips.forEach(tip => {
-                    if (tip.category !== currentCategory) {
-                        currentCategory = tip.category;
-                        const categoryTitle = document.createElement('h3');
-                        categoryTitle.className = 'text-lg font-bold text-indigo-600 dark:text-indigo-400 pt-4';
-                        categoryTitle.textContent = currentCategory;
-                        tipsContainer.appendChild(categoryTitle);
-                    }
-                    const tipElement = document.createElement('div');
-                    tipElement.className = 'bg-white/50 dark:bg-slate-900/40 rounded-lg p-3 mt-2 glass-card';
-                    tipElement.innerHTML = `<h4 class="font-bold text-slate-700 dark:text-slate-300">${tip.title}</h4><p class="text-sm text-slate-600 dark:text-slate-400">${tip.text}</p>`;
-                    tipsContainer.appendChild(tipElement);
-                });
-            }
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    if (i === index) {
-                        slide.classList.add('active');
-                    }
-                });
-                updatePagination(index);
-                prevBtn.disabled = index === 0;
-                nextBtn.disabled = index === slides.length - 1;
-            }
-
-            function updatePagination(activeIndex) {
-                paginationContainer.innerHTML = '';
-                slides.forEach((_, i) => {
-                    const dot = document.createElement('div');
-                    dot.classList.add('w-2.5', 'h-2.5', 'rounded-full', 'transition-all', 'duration-300');
-                    dot.classList.toggle('bg-indigo-600', i === activeIndex);
-                    dot.classList.toggle('bg-slate-400', i !== activeIndex);
-                    paginationContainer.appendChild(dot);
-                });
-            }
-            
-            nextBtn.addEventListener('click', () => {
-                if (currentSlide < slides.length - 1) {
-                    currentSlide++;
-                    showSlide(currentSlide);
-                }
-            });
-
-            prevBtn.addEventListener('click', () => {
-                if (currentSlide > 0) {
-                    currentSlide--;
-                    showSlide(currentSlide);
-                }
-            });
-            
-            tipsBtn.addEventListener('click', () => {
-                currentSlide = 7;
-                showSlide(currentSlide);
-            });
-
-            backToContactBtn.addEventListener('click', () => {
-                currentSlide = 6; 
-                showSlide(currentSlide);
-            });
-
-            populateTips();
-            showSlide(currentSlide);
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
