@@ -1,6 +1,6 @@
 # 🛠️ Projeto Suporte Técnico - Condomínio
 
-Esta é uma Landing Page simples, desenvolvida como projeto de portfólio, para oferecer serviços de suporte técnico de TI (o "Suporte Técnico de Confiança") para moradores de um condomínio.
+Esta é uma Landing Page simples, desenvolvida como projeto de portfólio, para oferecer serviços de suporte técnico de TI (o "Suporte Técnico de Confiança") para moradores do condomínio onde moro.
 
 ## 🎯 Objetivo
 
